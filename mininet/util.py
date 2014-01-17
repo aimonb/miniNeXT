@@ -303,12 +303,11 @@ def setPathPermsToID ( pathToUpdate, uid=None, gid=None,
 def setObjectPermsToID ( objectToUpdate, uid=None, gid=None,
                        mode=None, allowGreaterMode=False ):
     "Set an objects's permissions to the specified values (with IDs)"
-    if uid is None and gid is None:
-        pass
-    elif uid is None:
-        os.chown( objectToUpdate, -1, gid )
-    elif gid is None:
-        os.chown( objectToUpdate, uid, -1 )
+    if uid is None:
+        uid = -1
+    if gid is None:
+        gid = -1
+    os.chown( objectToUpdate, uid, gid )
 
     "Update the mode if needed"
     if mode is not None:
