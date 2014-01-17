@@ -13,7 +13,7 @@ set -o nounset
 MININET_DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd -P )"
 
 # Set up build directory, which by default is the working directory
-#  unless the working directory is a subdirectory of mininet, 
+#  unless the working directory is a subdirectory of mininet,
 #  in which case we use the directory containing mininet
 BUILD_DIR="$(pwd -P)"
 case $BUILD_DIR in
@@ -265,7 +265,7 @@ function wireshark_version_check {
     then
         # pre-1.10.0 wireshark
         echo "Setting revision: pre-ws-1.10.0"
-        WS_DISSECTOR_REV="pre-ws-1.10.0" 
+        WS_DISSECTOR_REV="pre-ws-1.10.0"
     fi
 }
 
@@ -761,7 +761,7 @@ function usage {
     printf -- ' -v: install Open (V)switch\n' >&2
     printf -- ' -w: install OpenFlow (W)ireshark dissector\n' >&2
     printf -- ' -x: install NO(X) Classic OpenFlow controller\n' >&2
-    printf -- ' -z: install Mininet Extreme(Z) dependencies\n' >&2
+    printf -- ' -z: install Mininet Extreme dependencies and patche(Z)\n' >&2
     printf -- ' -0: (default) -0[fx] installs OpenFlow 1.0 versions\n' >&2
     printf -- ' -3: -3[fx] installs OpenFlow 1.3 versions\n' >&2
     exit 2
@@ -810,7 +810,9 @@ else
             1.3) nox13;;
             *)  echo "Invalid OpenFlow version $OF_VERSION";;
             esac;;
-      z)    mn_extreme_deps;;
+      z)    mn_extreme_deps
+      		patch_quagga_initd
+      		;;
       0)    OF_VERSION=1.0;;
       3)    OF_VERSION=1.3;;
       ?)    usage;;
