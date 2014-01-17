@@ -9,19 +9,19 @@ Mininet Extreme introduces mount and PID namespaces to Mininet.
 This makes it possible to execute applications in containers which require
 independent configuration spaces, such as `Quagga` or `OpenVPN`. Built-in
 configurations make adding a Quagga router to a network topology easy. In 
-addition, Mininet Extreme is capable of connecting to the Transit Portal BGP 
-multiplexing service to provide BGP connectivity to emulated routers.
+addition, Mininet Extreme is capable of connecting to the Transit Portal 
+BGP multiplexing service to provide BGP connectivity to emulated routers.
 
 Mininet Extreme enables emulation of complex network topologies, including
 networks which combine technologies such as SDN and BGP. Networks can 
-exchange routes and traffic with the real internet by combining Mininet Extreme
-with Transit Portal.
+exchange routes and traffic with the real internet by combining Mininet 
+Extreme with Transit Portal.
   
 ### Added Functionality
 
 Mininet Extreme adds:
 
-* Support for mount namespaces, PID namespaces, legacy switches, legacy routers
+* Support for mount namespaces, PID namespaces, legacy switches & routers
 
 * Built-in support for the Transit Portal BGP multiplexer and Quagga router
 
