@@ -4,28 +4,46 @@ Mininet Extreme Installation/Configuration Notes
 
 1. Clone the repository to a chosen location
 
-2. Installation
+  Note: if you downloaded a ZIP from GitHub, rename the resulting directory
+  from mininet-extreme-master to mininet-extreme
 
-  To install dependencies on Ubuntu 12.10+ in developer mode (including Quagga, OpenVPN):
+2. Installation on Ubuntu 12.10+
 
-      `sudo mininet-extreme/util/install.sh -foqvz`
+  To install Mininet and dependencies (Quagga, OpenVPN) in developer mode:
+
+      `sudo mininet-extreme/util/install.sh -fovz`
 
   Note: this installs Quagga and patches /etc/init.d/quagga
    
 3. Launching an example topology
 
-  The following will launch a Mininet network consisting of a legacy switch and five
-  Quagga routers (legacy routers). Each Quagga router will read from its own configuration
-  space, stored within `mininet-extreme/examples/quaggacfgs/NAME`. In addition, each
-  Quagga instance will log to it's own location within `/var/log/quagga-` and store its
-  PID files within `/run/quagga-NAME`. This directories will be automatically created and
-  permissions will be automatically configured
+  An example is included of a Mininet network consisting of a legacy
+  switch and five Quagga routers (legacy routers). To launch, execute:
+
+      `sudo python mininet-extreme/quagga.py`
+
+  Each Quagga router will read from its own configuration space,
+  stored within: 
+
+      `mininet-extreme/examples/quaggacfgs/NAME`. 
+
+  In addition, each Quagga instance will log to it's own location within:
+
+      `/var/log/quagga-`
+
+  and store its PID files within:
+
+      `/run/quagga-NAME`. 
+
+  These directories and permissions will be automatically created and 
+  configured if necessary. To launch this topology, execute:
 
       `sudo python mininet-extreme/examples/quagga.py`
       
-  It is recommended that you do not attempt to access the `bgpd` console directly from
-  the Mininet shell, as there are some incompatibilities. Instead, use the following to
-  connect to a Quagga `bgpd` console:
+  It is recommended that you do not attempt to access the `bgpd` console
+  directly from the Mininet shell, as there are some interface issues
+  (typed characters appear twice, backspace does not work, etc.). 
+  Instead, use the following to connect to a Quagga `bgpd` console:
   
       # launch a shell in the container namespace
       `mininet-extreme/util/m <container name (a1, b1, rs, etc)>`
