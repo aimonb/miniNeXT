@@ -58,7 +58,28 @@ Mininet Extreme adds:
   where `PID` references the bash shell or another process within the
   container in question. To view the current mounts of the host system,
   replace `PID` with `1`
-  
+
+* If you are running Ubuntu 12.04 LTS (or earlier) you may see an error
+  when `openvswitch` is being installed, such as the following:
+
+```shell  
+Setting up openvswitch-datapath-dkms (1.4.0-1ubuntu1.5) ...
+...
+Building module:
+...
+Error! Bad return status for module build on kernel: 3.8.0-29-generic (x86_64)
+Consult /var/lib/dkms/openvswitch/1.4.0/build/make.log for more information.
+```
+
+  To resolve, simply execute the following:
+
+```shell
+sudo apt-get remove --purge openvswitch-datapath-dkms
+sudo apt-get install openvswitch-datapath-lts-raring-dkms
+```
+
+  For additional details, visit: http://bit.ly/1gXgDUh
+
 ### Installation and Sample Topology
 
 See `INSTALL` for installation instructions and details.
